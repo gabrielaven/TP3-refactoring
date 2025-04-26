@@ -2,12 +2,12 @@ package oop2.tp3.ejercicio1;
 
 public class Main {
     public static void main(String args[]) {
-        Libro elTunel = new Libro("El Túnel", Libro.REGULARES);
-        Libro antesDelFin = new Libro("Antes del Fin", Libro.REGULARES);
+    	Libro elTunel = new Libro("El Túnel", new PrecioNuevoLanzamiento());
+    	Libro antesDelFin = new Libro("Antes del Fin", new PrecioNuevoLanzamiento());
         CopiaLibro elTunelCopia = new CopiaLibro(elTunel);
         CopiaLibro antesDelFinCopia = new CopiaLibro(antesDelFin);
-        Alquiler alquilerElTunel = new Alquiler(elTunelCopia, 5);
-        Alquiler alquilerAntesDelFin = new Alquiler(antesDelFinCopia, 3);
+        Alquiler alquilerElTunel = new Alquiler(elTunelCopia, 1);
+        Alquiler alquilerAntesDelFin = new Alquiler(antesDelFinCopia, 1);
         Cliente yo = new Cliente("Javier");
         yo.alquilar(alquilerElTunel);
         yo.alquilar(alquilerAntesDelFin);
