@@ -1,6 +1,5 @@
 package oop2.tp3.ejercicio2;
 
-
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -9,57 +8,58 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
 public class RecaudacionTest {
+
+    private final Recaudacion recaudacion = new Recaudacion(new LectorCSV("src/main/resources/data.csv"));
 
     @Test
     public void testWhereGivenCompany() throws IOException {
-        Map<String, String> options = new HashMap<String, String>();
+        Map<String, String> options = new HashMap<>();
         options.put("company_name", "Facebook");
-        assertEquals(Recaudacion.where(options).size(), 7);
+        assertEquals(recaudacion.where(options).size(), 7);
     }
 
     @Test
     public void testWhereGivenCity() throws IOException {
-        Map<String, String> options = new HashMap<String, String>();
+        Map<String, String> options = new HashMap<>();
         options.put("city", "Tempe");
-        assertEquals(Recaudacion.where(options).size(), 3);
+        assertEquals(recaudacion.where(options).size(), 3);
     }
 
     @Test
     public void testWhereGivenState() throws IOException {
-        Map<String, String> options = new HashMap<String, String>();
+        Map<String, String> options = new HashMap<>();
         options.put("state", "CA");
-        assertEquals(Recaudacion.where(options).size(), 873);
+        assertEquals(recaudacion.where(options).size(), 873);
     }
 
     @Test
     public void testWhereGivenRound() throws IOException {
-        Map<String, String> options = new HashMap<String, String>();
+        Map<String, String> options = new HashMap<>();
         options.put("round", "a");
-        assertEquals(Recaudacion.where(options).size(), 582);
+        assertEquals(recaudacion.where(options).size(), 582);
     }
 
     @Test
     public void testMultipleOptions() throws IOException {
-        Map<String, String> options = new HashMap<String, String>();
+        Map<String, String> options = new HashMap<>();
         options.put("round", "a");
         options.put("company_name", "Facebook");
-        assertEquals(Recaudacion.where(options).size(), 1);
+        assertEquals(recaudacion.where(options).size(), 1);
     }
 
     @Test
     public void testWhereNotExists() throws IOException {
-        Map<String, String> options = new HashMap<String, String>();
+        Map<String, String> options = new HashMap<>();
         options.put("company_name", "NotFacebook");
-        assertEquals(Recaudacion.where(options).size(), 0);
+        assertEquals(recaudacion.where(options).size(), 0);
     }
 
     @Test
     public void testWhereCorrectKeys() throws IOException {
-        Map<String, String> options = new HashMap<String, String>();
+        Map<String, String> options = new HashMap<>();
         options.put("company_name", "Facebook");
-        Map<String, String> row = Recaudacion.where(options).get(0);
+        Map<String, String> row = recaudacion.where(options).get(0);
 
         assertEquals(row.get("permalink"), "facebook");
         assertEquals(row.get("company_name"), "Facebook");
@@ -70,6 +70,6 @@ public class RecaudacionTest {
         assertEquals(row.get("funded_date"), "1-Sep-04");
         assertEquals(row.get("raised_amount"), "500000");
         assertEquals(row.get("round"), "angel");
-
     }
 }
+

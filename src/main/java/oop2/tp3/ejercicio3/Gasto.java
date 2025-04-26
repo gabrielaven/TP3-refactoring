@@ -16,6 +16,6 @@ public abstract class Gasto {
     public abstract boolean esExcesoDeComida();
 
     public int montoComida() {
-        return 0; // Por defecto no suma a comida
+        return 0; 
     }
 }
